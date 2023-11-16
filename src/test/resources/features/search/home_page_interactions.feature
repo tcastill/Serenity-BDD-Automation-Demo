@@ -11,4 +11,5 @@ Feature: Home Page Verifications
   @Smoke
   Scenario: Add/Remove Elements
     When he verifies link is working for Add Remove Elements
+    When he is able to add 10 multiple elements and then delete them all
     Then he can click on the footer Elemental Selenium

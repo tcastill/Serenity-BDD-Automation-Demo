@@ -1,5 +1,6 @@
 package starter.stepdefinitions;
 
+import com.vladsch.flexmark.ext.tables.TableHead;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -64,5 +65,18 @@ public class SearchStepDefinitions {
                 Click.on(ADD_REMOVE_ELEMENT_DELETE_BUTTON),
                 Ensure.that(ADD_REMOVE_ELEMENT_DELETE_BUTTON).isNotDisplayed()
         );
+    }
+
+    @When("{actor} is able to add {int} multiple elements and then delete them all")
+    public void heIsAbleToKeepAddingMultipleElementsAndThenDeleteThemAll(Actor actor,int count) {
+        for(int i = 0;i < count;i++){
+            actor.attemptsTo(Click.on(ADD_REMOVE_ELEMENT_ADD_BUTTON));
+        }
+
+        for(int d = 0;d < count;d++){
+            actor.attemptsTo(Click.on(ADD_REMOVE_ELEMENT_DELETE_BUTTON));
+        }
+
+        actor.attemptsTo(Ensure.that(ADD_REMOVE_ELEMENT_DELETE_BUTTON).isNotDisplayed());
     }
 }
