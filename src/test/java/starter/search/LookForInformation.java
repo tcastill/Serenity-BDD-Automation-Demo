@@ -4,6 +4,7 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Enter;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 public class LookForInformation {
     public static Performable about(String searchTerm) {
