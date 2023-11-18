@@ -48,5 +48,6 @@ public class HomePage {
     public static Target TYPOS = Target.the("Typos").locatedBy("//a[contains(., 'Typos')]");
     public static Target WYSIWYG_EDITOR = Target.the("WYSIWYG Editor").locatedBy("//a[contains(., 'WYSIWYG Editor')]");
     public static Target ELEMENTAL_SELENIUM = Target.the("A/B Testing").locatedBy("//a[contains(., 'Elemental Selenium')]");
+    public static Target BLUE_DOM_BUTTON = Target.the("BLUE DOM BUTTON").locatedBy("/html/body/div[2]/div/div/div/div/div[1]/a[1]");
 
 }

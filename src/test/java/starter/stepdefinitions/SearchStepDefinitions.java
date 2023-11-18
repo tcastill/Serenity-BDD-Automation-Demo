@@ -94,25 +94,28 @@ public class SearchStepDefinitions {
         actor.attemptsTo(Ensure.that(ADD_REMOVE_ELEMENT_DELETE_BUTTON).isNotDisplayed());
     }
 
-    @When("{actor} can land to the basic auth from the UI")
-    public void heCanLandToTheBasicAuthFromTheUI(Actor actor) {
+    @When("{actor} successfully logs in to Basic Auth UI")
+    public void heSuccessfullyLogsInToBasicAuthUi(Actor actor) {
+        String user = ADMIN;
         actor.attemptsTo(
                 Ensure.that(BASIC_AUTH).hasText(BASIC_AUTH_HEADER),
                 Click.on(BASIC_AUTH).afterWaitingUntilPresent(),
-                Ensure.thatTheCurrentPage().currentUrl().contains("https://the-internet.herokuapp.com")
+                Ensure.thatTheCurrentPage().currentUrl().contains(MAIN_URL),
+                Open.url("http://" + user + ":" + user + "@the-internet.herokuapp.com/basic_auth"),
+                Ensure.thatTheCurrentPage().pageSource().contains("Congratulations")
         );
     }
 
     @When("he successfully logs in to Basic Auth with the endpoint")
     public void heSuccessfullyLogsInToBasicAuthWithTheEndpoint() {
-        Actor actor = Actor.named("Admin")
-                .whoCan(CallAnApi.at("https://the-internet.herokuapp.com"));
+        Actor actor = Actor.named(ADMIN)
+                .whoCan(CallAnApi.at(MAIN_URL));
 
         actor.attemptsTo(
-                Get.resource("/basic_auth")
+                Get.resource(BASIC_AUTHEN)
                         .with(request ->
                                 request.header(
-                                        "Authorization", "Basic YWRtaW46YWRtaW4=")));
+                                        AUTHORIZATION, BASIC_CRED)));
 
         actor.should(
                 seeThatResponse("200 with Congratulations should be returned",
@@ -123,14 +126,14 @@ public class SearchStepDefinitions {
 
     @When("he fails to log in to Basic Auth and redirect correctly with the endpoint")
     public void heFailsToLogInToBasicAuthAndRedirectCorrectlyWithTheEndpoint() {
-        Actor actor = Actor.named("Admin")
-                .whoCan(CallAnApi.at("https://the-internet.herokuapp.com"));
+        Actor actor = Actor.named(ADMIN)
+                .whoCan(CallAnApi.at(MAIN_URL));
 
         actor.attemptsTo(
-                Get.resource("/basic_auth")
+                Get.resource(BASIC_AUTHEN)
                         .with(request ->
                                 request.header(
-                                        "Authorization", "Basic none")));
+                                        AUTHORIZATION, NONE)));
 
         actor.should(
                 seeThatResponse("200 with Congratulations should be returned",
@@ -151,15 +154,36 @@ public class SearchStepDefinitions {
     @When("he finds that there are {int} total broken images on the page")
     public void heFindsThatThereAreTotalBrokenImagesOnThePage(int images) {
         int brokenImage = 0;
-        driver.get("http://the-internet.herokuapp.com/broken_images");
-        for (WebElement image : driver.findElements(By.cssSelector("img"))) {
-            if (image.getAttribute("naturalWidth").equals("0"))
+        driver.get(BROKEN_IMAGE_URL);
+        for (WebElement image : driver.findElements(By.cssSelector(IMG))) {
+            if (image.getAttribute(NATURAL_WIDTH).equals("0"))
             {
-                log.debug(image.getAttribute("outerHTML") + " is broken.");
+                log.debug(image.getAttribute(OUTTER_HTML) + " is broken.");
                 brokenImage++;
             }
         }
         log.info("Total amount of broken images are {}", brokenImage);
-        Assert.assertEquals("should be the same", brokenImage, images);
+        Assert.assertEquals("Broken images count should be the same", brokenImage, images);
+    }
+
+    @When("{actor} verifies link is working for Challenging DOM")
+    public void heVerifiesLinkIsWorkingForChallengingDOM(Actor actor) {
+        actor.attemptsTo(
+                Ensure.that(CHALLENGING_DOM).hasText(CHALLENGING_DOM_HEADER),
+                Click.on(CHALLENGING_DOM),
+                Ensure.thatTheCurrentPage().pageSource().containsIgnoringCase(CHALLENGING_DOM_HEADER)
+        );
+    }
+
+    @When("{actor} can successfully click on the BLUE DOM BUTTON")
+    public void heCanSuccessfullyClickOnTheBLUEDOMBUTTON(Actor actor) {
+        int timeout = 0;
+        while (timeout < 40){
+            timeout++;
+            actor.attemptsTo(Click.on(BLUE_DOM_BUTTON));
+            if (BLUE_DOM_BUTTON.getName().matches(BLUE_BUTTON_NAME))
+                return;
+        }
+        Assert.fail();
     }
 }
