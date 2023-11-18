@@ -2,6 +2,8 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+import static starter.stepdefinitions.Constants.*;
+
 public class HomePage {
     public static Target AB_TESTING = Target.the("A/B Testing").locatedBy("//a[contains(., 'A/B Testing')]");
     public static Target ADD_REMOVE_ELEMENTS = Target.the("Add/Remove Elements").locatedBy("//a[contains(., 'Add/Remove Elements')]");
@@ -9,6 +11,8 @@ public class HomePage {
     public static Target BROKEN_IMAGES = Target.the("Broken Images").locatedBy("//a[contains(., 'Broken Images')]");
     public static Target CHALLENGING_DOM = Target.the("Challenging DOM").locatedBy("//a[contains(., 'Challenging DOM')]");
     public static Target CHECKBOXES = Target.the("Checkboxes").locatedBy("//a[contains(., 'Checkboxes')]");
+    public static Target CHECKBOXES_ONE = Target.the("Checkboxes").locatedBy(CHECKBOX_ONE_ELEMENT);
+    public static Target CHECKBOXES_TWO = Target.the("Checkboxes").locatedBy(CHECKBOX_TWO_ELEMENT);
     public static Target CONTEXT_MENU = Target.the("Context Menu").locatedBy("//a[contains(., 'Context Menu')]");
     public static Target DIGEST_AUTHENTICATION = Target.the("Digest Authentication").locatedBy("//a[contains(., 'Digest Authentication')]");
     public static Target DISAPPEARING_ELEMENTS = Target.the("Disappearing Elements").locatedBy("//a[contains(., 'Disappearing Elements')]");

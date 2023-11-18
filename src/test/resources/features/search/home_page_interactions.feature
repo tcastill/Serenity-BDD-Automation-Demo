@@ -1,6 +1,6 @@
 Feature: Home Page Verifications
 
-  Background: Test Sernity BDD with herokuapp page
+  Background: Test Serenity BDD with herokuapp page
     Given Edward goes to herokuapp and checks the page
 
   @Smoke
@@ -31,3 +31,11 @@ Feature: Home Page Verifications
   Scenario: Challenging DOM: Find any broken images in the page
     When he verifies link is working for Challenging DOM
     When he can successfully click on the BLUE DOM BUTTON
+
+  @Smoke
+  Scenario: Checkboxes: Check and Un-Check all boxes
+    When he verifies link is working for Checkboxes
+    When he can click to enable and disable checkbox 1
+    When he can click to disable and enable checkbox 2
+    Then he can click on the footer Elemental Selenium
+

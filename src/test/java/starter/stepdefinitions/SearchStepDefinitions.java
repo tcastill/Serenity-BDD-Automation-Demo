@@ -12,6 +12,7 @@ import net.serenitybdd.screenplay.ensure.Ensure;
 import net.serenitybdd.screenplay.questions.page.TheWebPage;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.serenitybdd.screenplay.rest.interactions.Get;
+import net.serenitybdd.screenplay.ui.Checkbox;
 import net.thucydides.model.util.EnvironmentVariables;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
@@ -186,4 +187,30 @@ public class SearchStepDefinitions {
         }
         Assert.fail();
     }
+
+    @When("{actor} verifies link is working for Checkboxes")
+    public void heVerifiesLinkIsWorkingForCheckboxes(Actor actor) {
+        actor.attemptsTo(
+                Ensure.that(CHECKBOXES).hasText(CHECKBOXES_HEADER),
+                Click.on(CHECKBOXES),
+                Ensure.thatTheCurrentPage().pageSource().containsIgnoringCase(CHECKBOXES_HEADER)
+        );
+    }
+
+    @When("{actor} can click to enable and disable checkbox 1")
+    public void heCanClickToEnableAndDisableCheckbox_(Actor actor) {
+        actor.attemptsTo(Click.on(CHECKBOXES_ONE));
+        Ensure.that(Checkbox.locatedBy(CHECKBOX_ONE_ELEMENT).containingText(CHECKED));
+        actor.attemptsTo(Click.on(CHECKBOXES_ONE));
+        Ensure.that(Checkbox.locatedBy(CHECKBOX_ONE_ELEMENT).containingText(CHECKED)).isNotDisplayed();
+    }
+
+    @When("{actor} can click to disable and enable checkbox 2")
+    public void heCanClickToDisableAndEnableCheckbox_(Actor actor) {
+        actor.attemptsTo(Click.on(CHECKBOXES_TWO));
+        Ensure.that(Checkbox.locatedBy(CHECKBOX_TWO_ELEMENT).containingText(CHECKED)).isNotDisplayed();
+        actor.attemptsTo(Click.on(CHECKBOXES_TWO));
+        Ensure.that(Checkbox.locatedBy(CHECKBOX_TWO_ELEMENT).containingText(CHECKED));
+    }
+
 }

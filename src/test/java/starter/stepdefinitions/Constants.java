@@ -12,11 +12,15 @@ public class Constants {
     public static final String BROKEN_IMAGE_URL = "http://the-internet.herokuapp.com/broken_images";
     public static final String CHALLENGING_DOM_HEADER = "Challenging DOM";
     public static final String BLUE_BUTTON_NAME = "BLUE DOM BUTTON";
+    public static final String CHECKBOXES_HEADER = "Checkboxes";
+    public static final String CHECKBOX_ONE_ELEMENT = "//*[@id=\"checkboxes\"]/input[1]";
+    public static final String CHECKBOX_TWO_ELEMENT = "//*[@id=\"checkboxes\"]/input[2]";
 
     //DOM Attributes
     public static final String OUTTER_HTML = "outerHTML";
     public static final String NATURAL_WIDTH = "naturalWidth";
     public static final String IMG = "img";
+    public static final String CHECKED = "checked";
 
     //USER
     public static final String ADMIN = "admin";
