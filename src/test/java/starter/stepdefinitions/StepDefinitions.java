@@ -30,6 +30,12 @@ import static starter.elements.BrokenImagesPage.*;
 import static starter.elements.ChallengingDomPage.*;
 import static starter.elements.CheckboxesPage.*;
 
+/**
+ * Step definitions for Cucumber scenarios
+ *
+ * @author Cristorey Castillo
+ *
+ */
 @Slf4j
 public class StepDefinitions {
 

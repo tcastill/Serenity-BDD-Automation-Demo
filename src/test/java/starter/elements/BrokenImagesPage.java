@@ -2,6 +2,11 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+/**
+ * Broken Images page constants and locators
+ *
+ * @author Cristorey Castillo
+ */
 public class BrokenImagesPage {
     public static final String BROKEN_IMAGES_HEADER = "Broken Images";
     public static final String NATURAL_WIDTH = "naturalWidth";

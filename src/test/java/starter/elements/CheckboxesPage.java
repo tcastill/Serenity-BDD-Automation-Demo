@@ -2,6 +2,11 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+/**
+ * Checkboxes page constants and locators
+ *
+ * @author Cristorey Castillo
+ */
 public class CheckboxesPage {
     public static final String CHECKED = "checked";
     public static final String CHECKBOXES_HEADER = "Checkboxes";

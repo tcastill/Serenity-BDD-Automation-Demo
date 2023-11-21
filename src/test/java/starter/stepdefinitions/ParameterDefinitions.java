@@ -6,6 +6,11 @@ import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 
+/**
+ * Parameters for Actor functions
+ *
+ * @author Cristorey Castillo
+ */
 public class ParameterDefinitions {
 
     @ParameterType(".*")

@@ -2,6 +2,11 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+/**
+ * Add Remove Elements Testing page constants and locators
+ *
+ * @author Cristorey Castillo
+ */
 public class AddRemoveElementsPage {
     public static final String ADD_REMOVE_HEADER = "Add/Remove Elements";
     public static Target ADD_REMOVE_ELEMENTS = Target.the("Add/Remove Elements").locatedBy("//a[contains(., 'Add/Remove Elements')]");

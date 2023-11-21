@@ -2,6 +2,11 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+/**
+ * Challenging Dom page constants and locators
+ *
+ * @author Cristorey Castillo
+ */
 public class ChallengingDomPage {
     public static final String BLUE_BUTTON_NAME = "BLUE DOM BUTTON";
     public static final String CHALLENGING_DOM_HEADER = "Challenging DOM";

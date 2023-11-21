@@ -2,6 +2,11 @@ package starter.elements;
 
 import net.serenitybdd.screenplay.targets.Target;
 
+/**
+ * Basic Auth page constants and locators
+ *
+ * @author Cristorey Castillo
+ */
 public class BasicAuthPage {
     public static final String ADMIN = "admin";
     public static final String USERNAME = "username";
